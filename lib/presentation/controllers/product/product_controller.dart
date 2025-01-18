@@ -1,11 +1,11 @@
-import 'dart:convert';
-import 'package:clean_architecture/core/api_baseclass/ApiBaseServices.dart';
 import 'package:clean_architecture/data/use_case/exicute_product_apicall.dart';
 import 'package:clean_architecture/domain/entities/model/product_model.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   ExicuteApicall _exicuteApicalll;
+
+  ProductController(this._exicuteApicalll);
   List<ProductModel> products = <ProductModel>[];
   var filteredProducts = <ProductModel>[].obs;
 
@@ -25,7 +25,7 @@ class ProductController extends GetxController {
   Future<void> fetchProducts() async {
     try {
       isLoading(true);
-      final response = await _exicuteApicalll.ExicuteApicallDone();
+      final response = await _exicuteApicalll.exicuteApicallDone();
       filteredProducts.value = response;
       update();
     } catch (e) {

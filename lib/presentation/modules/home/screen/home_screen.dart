@@ -5,7 +5,6 @@ import 'package:clean_architecture/presentation/controllers/product/product_cont
 import 'package:clean_architecture/presentation/modules/cart/screen/cart_screen.dart';
 import 'package:clean_architecture/presentation/modules/home/widget/product_card.dart';
 import 'package:clean_architecture/presentation/modules/product_detsils/screen/product_details_screen.dart';
-import 'package:clean_architecture/presentation/modules/search/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
@@ -68,7 +67,7 @@ class HomeScreen extends StatelessWidget {
               ),
               body: SingleChildScrollView(
                 child: GetBuilder<ProductController>(
-                  init: ProductController(),
+                  init: ProductController(Get.find()),
                   builder: (controller) {
                     return controller.isLoading.value
                         ? const Center(
@@ -81,9 +80,7 @@ class HomeScreen extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10.w, vertical: 10.h),
                                 child: TextField(
-                                  onTap: () {
-                                    Get.to(() => SearchPage());
-                                  },
+                                  onTap: () {},
                                   readOnly: true,
                                   decoration: InputDecoration(
                                     hintText: 'Search products...',
